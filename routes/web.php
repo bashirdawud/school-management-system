@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\ProfileController;
 use App\Http\Controllers\backend\Setup\StudentClassController;
+use App\Http\Controllers\backend\Setup\StudentYearController;
 
 
 /*
@@ -63,5 +64,18 @@ Route::prefix('setup')->group(function (){
     Route::get('/student/class/edit/{id}', [StudentClassController::class, 'EditClass'])->name('class.edit');
     Route::post('/student/class/update/{id}', [StudentClassController::class, 'UpdateClass'])->name('update.student.class');
     Route::get('/student/class/delete/{id}', [StudentClassController::class, 'DeleteClass'])->name('class.delete');
+
+});
+
+// Manage Student Year 
+
+Route::prefix('year')->group(function(){
+
+    Route::get('/student/view', [StudentYearController::class, 'ViewYear'])->name('student.year.view');
+    Route::get('/student/add', [StudentYearController::class, 'AddYear'])->name('student.year.add');
+    Route::post('/student/store', [StudentYearController::class, 'StoreYear'])->name('store.student.year');
+    Route::get('/student/edit/{id}', [StudentYearController::class, 'EditYear'])->name('student.year.edit');
+    Route::post('/student/update/{id}', [StudentYearController::class, 'UpdateYear'])->name('update.student.year');
+    Route::get('/student/delete/{id}', [StudentYearController::class, 'DeleteYear'])->name('student.year.delete');
 
 });
